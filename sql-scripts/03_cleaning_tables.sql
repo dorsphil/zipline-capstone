@@ -82,3 +82,49 @@ UPDATE facilities
 UPDATE facilities
     SET SITE_ID = NULL
     WHERE SITE_ID = 0;
+
+/*
+ * Update the single facility identified as having an active service 
+ * but missing its 'Site_ID'.
+ *
+ * -- Background Rationale:--
+ * A total of 59 facilities had missing/null SITE_ID values.
+ * Cross-referencing with the 'deliveries' table confirmed 58 of these were never served, 
+ * justifying their missing 'SITE_ID' values.
+- 'Asawinso SDA HSP' was the single exception: it received packages but was missing its 'SITE_ID'.
+- The new, valid 'SITE_ID' was sourced directly from the GH2 Zipline Controller Team on 9th Dec, 2025.
+*/
+
+-- check to confirm NULL state ---
+SELECT FACILITY_NAME, DISTRICT,
+       REGION, SITE_ID
+       FROM  facilities
+       WHERE FACILITY_NAME = 'Asawisno SDA HSP' AND SITE ID IS NULL; --since all blanks were set to NULL initially
+
+-- update 'SITE_ID' as found from Controller Team --
+UPDATE facilities
+     SET SITE_ID = 1309 --valid site_id from Controller Team
+     WHERE FACILITY_NAME = 'Asawinso SDA HSP' AND SITE_ID IS NULL;
+
+------------------------------------
+--	check for duplicates ---
+------------------------------------
+/*
+* for 'delivery_key' in deliveries table
+* The duplicates identified were found to be valid, as the same delivery key may refer to 
+* multiple product deliveries (e.g.one row with Paracetamol, another with Diclofenac Gel).
+* These deliveries were part of the same shipment, and no further data cleaning is needed.
+* Total number of delivery keys with duplicates: 6188.
+*/
+SELECT delivery_key, COUNT (*) AS count 
+FROM deliveries
+GROUP BY delivery_key
+HAVING COUNT(*) >1;
+
+-- for facility_id in facilities table
+-- returns no duplicate values in this column
+SELECT facility_id, COUNT (*) AS count 
+FROM facilities
+GROUP BY facility_id
+HAVING COUNT(*) >1;
+

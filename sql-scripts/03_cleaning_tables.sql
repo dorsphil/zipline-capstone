@@ -128,3 +128,59 @@ FROM facilities
 GROUP BY facility_id
 HAVING COUNT(*) >1;
 
+---------------------------------
+--   Case normalization ---
+---------------------------------
+--	Deliveries Table ---
+-- Check case inconsistency case usage in all VARCHAR/TEXT columns
+
+SELECT PRIORITY AS original_priority,
+    LOWER(PRIORITY) AS lowercase_priority,
+    COUNT(*) AS count
+    FROM deliveries
+    GROUP BY PRIORITY 
+    ORDER BY count DESC;
+-- standardize prority values
+UPDATE deliveries 
+SET PRIORITY = CASE 
+    WHEN LOWER(TRIM(PRIORITY)) = 'emergency' THEN 'Emergency'
+    WHEN LOWER(TRIM(PRIORITY)) = 'resupply' THEN 'Resupply'
+    WHEN LOWER(TRIM(PRIORITY)) = 'scheduled order' THEN 'Scheduled Order'
+    ELSE PRIORITY
+END;
+
+SELECT HEALTH_FACILITY_NAME AS original_value, 
+	LOWER(HEALTH_FACILITY_NAME) AS normalized_value,
+	COUNT(*) AS count 
+	FROM deliveries 
+	GROUP BY HEALTH_FACILITY_NAME  
+	ORDER BY count DESC;
+
+SELECT HEALTH_FACILITY_LOCALITY AS original_value,
+	LOWER(HEALTH_FACILITY_LOCALITY ) AS normalized_value,
+	COUNT(*) AS count
+	FROM deliveries GROUP BY HEALTH_FACILITY_LOCALITY    
+	ORDER BY count DESC;
+
+SELECT PRODUCT_NAME  AS original_value, 
+	LOWER(PRODUCT_NAME  ) AS normalized_value,
+	COUNT(*) AS count
+ 	FROM deliveries
+	GROUP BY PRODUCT_NAME     
+	ORDER BY count DESC;
+
+SELECT USE_CASE_CATEGORY AS original_value,
+	LOWER(USE_CASE_CATEGORY ) AS normalized_value, 
+	COUNT(*) AS count FROM deliveries 
+	GROUP BY USE_CASE_CATEGORY  
+	ORDER BY count DESC;
+
+SELECT USE_CASE_SUBCATEGORY   AS original_value,
+	 LOWER(USE_CASE_SUBCATEGORY ) AS normalized_value,
+	 COUNT(*) AS count FROM deliveries
+	 GROUP BY USE_CASE_SUBCATEGORY  
+	 ORDER BY count DESC;
+
+
+
+

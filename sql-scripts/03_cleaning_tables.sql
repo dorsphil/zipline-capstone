@@ -3,7 +3,7 @@
 --------------------------------------
 
 --  for deliveries table ---
-mysql> UPDATE deliveries SET
+UPDATE deliveries SET
      NEST_NAME = TRIM(NEST_NAME),
      PRIORITY = TRIM(PRIORITY),
      DELIVERY_KEY = TRIM(DELIVERY_KEY),
@@ -143,10 +143,10 @@ SELECT PRIORITY AS original_priority,
 -- standardize prority values
 UPDATE deliveries 
 SET PRIORITY = CASE 
-    WHEN LOWER(TRIM(PRIORITY)) = 'emergency' THEN 'Emergency'
-    WHEN LOWER(TRIM(PRIORITY)) = 'resupply' THEN 'Resupply'
-    WHEN LOWER(TRIM(PRIORITY)) = 'scheduled order' THEN 'Scheduled Order'
-    ELSE PRIORITY
+    WHEN LOWER(PRIORITY) = 'emergency' THEN 'Emergency'
+    WHEN LOWER(PRIORITY) = 'resupply' THEN 'Resupply'
+    WHEN LOWER(PRIORITY) = 'scheduled' THEN 'Scheduled'
+    ELSE PRIORITY -- Keeps the original value if no match
 END;
 
 SELECT HEALTH_FACILITY_NAME AS original_value, 

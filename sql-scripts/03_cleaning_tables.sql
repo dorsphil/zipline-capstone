@@ -106,6 +106,33 @@ UPDATE facilities
      SET SITE_ID = 1309 --valid site_id from Controller Team
      WHERE FACILITY_NAME = 'Asawinso SDA HSP' AND SITE_ID IS NULL;
 
+
+-------------------------------------------------
+--  update on TIME_ORDER_CONFIRMED_LOCAL column 
+-------------------------------------------------
+/*
+*  Discovered later that some TIME_ORDER_CONFIRMED_LOCAL values were stored
+*  as the zero datetime '0000-00-00 00:00:00' instead of NULL.
+* This explains why the earlier check
+* SELECT * FROM deliveries WHERE TIME_ORDER_CONFIRMED_LOCAL IS NULL;
+* returned an empty set even though the column looked blank in the source data.
+* 
+* Since the dataset is expected to start from 2023‑01‑01, any timestamp
+* earlier than 2022‑12‑31 is treated as invalid / missing and should be NULL.
+* The following statements implement that assumption and clean the data:
+*/
+
+--	Inspect potentially invalid timestamps (including zero dates) ---
+SELECT DELIVERY_KEY, HEALTH_FACILITY_NAME, 
+	TIME_ORDER_CONFIRMED_LOCAL , TIME_DELIVERED_LOCAL
+	FROM deliveries WHERE TIME_ORDER_CONFIRMED_LOCAL < '2023-01-01';
+
+--Convert all such invalid timestamps to NULL so that future checks using
+--    TIME_ORDER_CONFIRMED_LOCAL IS NULL correctly identify missing values.
+UPDATE deliveries
+	SET TIME_ORDER_CONFIRMED_LOCAL = NULL
+	WHERE TIME_ORDER_CONFIRMED_LOCAL < '2022-12-31';
+
 ------------------------------------
 --	check for duplicates ---
 ------------------------------------
@@ -180,6 +207,17 @@ SELECT USE_CASE_SUBCATEGORY   AS original_value,
 	 COUNT(*) AS count FROM deliveries
 	 GROUP BY USE_CASE_SUBCATEGORY  
 	 ORDER BY count DESC;
+
+-------------------------------------------
+--	Check for Invalid or Negative Values
+--------------------------------------------
+-- check for N_UNITS since units delivered can't be negative
+SELECT *
+	FROM deliveries
+	WHERE N_UNITS <= 0;
+
+
+	
 
 
 

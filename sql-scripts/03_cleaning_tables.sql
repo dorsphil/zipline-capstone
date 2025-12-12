@@ -215,6 +215,29 @@ SELECT USE_CASE_SUBCATEGORY   AS original_value,
 SELECT *
 	FROM deliveries
 	WHERE N_UNITS <= 0;
+-- check for invalid SITE_ID values
+SELECT *
+	FROM facilities
+	WHERE SITE_ID <= 0;
+
+--  check for time inconsistencies in delivery and order
+--  confirmation time that may cause negative values
+--  ignore these in analysis since its return values
+--  make up 0.33% of the entire dataset hence insignificant
+SELECT *
+	FROM deliveries
+	WHERE TIME_DELIVERED_LOCAL < TIME_ORDER_CONFIRMED LOCAL;
+
+-- create a view to exclude incorrect times
+-- add a delivery duration column
+-- further analysis will be in the scope of this view
+CREATE VIEW deliveries_valid AS 
+	SELECT *, TIMESTAMPDIFF(MINUTE, TIME_ORDER_CONFIRMED_LOCAL, TIME_DELIVERED_LOCAL)
+	 AS DELIVERY_DURATION_MINUTES FROM deliveries WHERE TIME_DELIVERED_LOCAL >=  TIME_ORDER_CONFIRMED_LOCAL;
+
+
+
+
 
 
 	

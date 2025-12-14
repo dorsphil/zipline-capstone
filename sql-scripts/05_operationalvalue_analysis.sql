@@ -3,7 +3,7 @@
 --------------------------------------------
 SELECT DATE_FORMAT(TIME_ORDER_CONFIRMED_LOCAL, '%Y-%m') AS month,
        COUNT(*) AS total_deliveries
-FROM deliveries_full
+FROM deliveries_complete
 GROUP BY month
 ORDER BY month;
 
@@ -24,14 +24,14 @@ ORDER BY total_deliveries DESC;
 -- Per Regions
 SELECT REGION,
        COUNT(*) AS delivery_count
-FROM deliveries_full
+FROM deliveries_complete
 GROUP BY REGION
 ORDER BY delivery_count DESC;
 
 -- Per District
 SELECT DISTRICT,
        COUNT(*) AS delivery_count
-FROM deliveries_full
+FROM deliveries_complete
 GROUP BY DISTRICT
 ORDER BY delivery_count DESC;
 

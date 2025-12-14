@@ -143,14 +143,14 @@ UPDATE deliveries
 * These deliveries were part of the same shipment, and no further data cleaning is needed.
 * Total number of delivery keys with duplicates: 6188.
 */
-SELECT delivery_key, COUNT (*) AS count 
+SELECT delivery_key, COUNT(*) AS count 
 FROM deliveries
 GROUP BY delivery_key
 HAVING COUNT(*) >1;
 
 -- for facility_id in facilities table
 -- returns no duplicate values in this column
-SELECT facility_id, COUNT (*) AS count 
+SELECT facility_id, COUNT(*) AS count 
 FROM facilities
 GROUP BY facility_id
 HAVING COUNT(*) >1;

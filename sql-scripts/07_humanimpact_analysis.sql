@@ -1,11 +1,10 @@
 ---------------------------------------------
 --	Human Impact
 ---------------------------------------------
+
+--  Estimated Lives Saved
 SELECT 
     COUNT(*) AS estimated_lives_saved,
-    ROUND(AVG(DELIVERY_DURATION_MINUTES), 2) AS avg_emergency_delivery_time_min,
-    MIN(DELIVERY_DURATION_MINUTES) AS fastest_delivery_min,
-    MAX(DELIVERY_DURATION_MINUTES) AS slowest_delivery_min
 FROM deliveries_complete
 WHERE PRIORITY = 'Emergency';
 
@@ -20,6 +19,10 @@ SELECT
 FROM deliveries_complete
 GROUP BY DISTRICT
 ORDER BY total_deliveries DESC;
+
+--ROUND(AVG(DELIVERY_DURATION_MINUTES), 2) AS avg_emergency_delivery_time_min,
+    --MIN(DELIVERY_DURATION_MINUTES) AS fastest_delivery_min,
+    --MAX(DELIVERY_DURATION_MINUTES) AS slowest_delivery_min
 
 
 ----------------------------------------------

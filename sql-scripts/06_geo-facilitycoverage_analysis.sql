@@ -8,12 +8,13 @@ SELECT COUNT(DISTINCT FACILITY_ID) AS total_facilities_served
 FROM deliveries_complete;
 
 
---	Number of Deliveries per Facility Type
-SELECT FACILITY_TYPE,
-       COUNT(*) AS total_deliveries
+--  Types of facilities were supported and how many of each type
+SELECT 
+    FACILITY_TYPE,
+    COUNT(DISTINCT FACILITY_ID) AS number_of_facilities
 FROM deliveries_complete
 GROUP BY FACILITY_TYPE
-ORDER BY total_deliveries DESC;
+ORDER BY FACILITY_TYPE;
 
 
 --	Level of Support per Facility Group

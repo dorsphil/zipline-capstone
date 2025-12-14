@@ -34,13 +34,13 @@ ORDER BY total_deliveries DESC;
 SELECT 
     FACILITY_TYPE,
     COUNT(*) AS total_deliveries,
-    -- Emergency
+  
     SUM(CASE WHEN PRIORITY = 'Emergency' THEN 1 ELSE 0 END) AS emergency_deliveries,
     ROUND(SUM(CASE WHEN PRIORITY = 'Emergency' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS pct_emergency,
-    -- Resupply
+   
     SUM(CASE WHEN PRIORITY = 'Resupply' THEN 1 ELSE 0 END) AS resupply_deliveries,
     ROUND(SUM(CASE WHEN PRIORITY = 'Resupply' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS pct_resupply,
-    -- Scheduled
+    
     SUM(CASE WHEN PRIORITY = 'Scheduled' THEN 1 ELSE 0 END) AS scheduled_deliveries,
     ROUND(SUM(CASE WHEN PRIORITY = 'Scheduled' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS pct_scheduled
 FROM deliveries_complete

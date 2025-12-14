@@ -7,6 +7,12 @@ FROM deliveries_complete
 GROUP BY month
 ORDER BY month;
 
+-----------------------------------------
+--  Total number of valid deliveries
+------------------------------------------
+SELECT COUNT(DELIVERY_KEY) AS total_deliveries
+FROM deliveries_complete;
+
 -------------------------------------------
 --	Product Types Delivered
 -------------------------------------------

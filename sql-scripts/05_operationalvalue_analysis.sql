@@ -11,7 +11,8 @@ ORDER BY month;
 --	Product Types Delivered
 -------------------------------------------
 SELECT USE_CASE_CATEGORY,
-	COUNT(*) AS total_deliveries
+	COUNT(*) AS total_deliveries,
+	ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM deliveries_complete), 2) AS pct_of_total
 FROM deliveries_complete
 GROUP BY USE_CASE_CATEGORY
 ORDER BY total_deliveries DESC;
@@ -34,3 +35,24 @@ FROM deliveries_full
 GROUP BY DISTRICT
 ORDER BY delivery_count DESC;
 
+
+----------------------------------------------
+--	Average Delivery Time by Product Type
+---------------------------------------------
+SELECT 
+    USE_CASE_CATEGORY,
+    ROUND(AVG(DELIVERY_DURATION_MINUTES), 2) AS avg_delivery_time_minutes
+FROM deliveries_complete
+GROUP BY USE_CASE_CATEGORY
+ORDER BY avg_delivery_time_minutes;
+
+-------------------------------------------
+--	Average Delivery Time by Priority
+-------------------------------------------
+-- Average delivery time by priority (operational efficiency)
+SELECT 
+    PRIORITY,
+    ROUND(AVG(DELIVERY_DURATION_MINUTES), 2) AS avg_delivery_time_min
+FROM deliveries_complete
+GROUP BY PRIORITY
+ORDER BY avg_delivery_time_min;

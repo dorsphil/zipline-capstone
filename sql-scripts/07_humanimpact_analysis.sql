@@ -4,7 +4,7 @@
 
 --  Estimated Lives Saved
 SELECT 
-    COUNT(*) AS estimated_lives_saved,
+    COUNT(*) AS estimated_lives_saved
 FROM deliveries_complete
 WHERE PRIORITY = 'Emergency';
 

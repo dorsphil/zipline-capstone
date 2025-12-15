@@ -1,0 +1,12 @@
+-- ============================================
+-- DASHBOARD DATA EXPORT SCRIPT
+-- ============================================
+-- This file contains queries to generate JSON files
+-- for the dashboard overview page.
+-- Run each query and save output to corresponding JSON file.
+-- ============================================
+
+-- ============================================
+-- 1. TOTAL DELIVERIES
+-- Output: data/total_deliveries.json
+-- ============================================

@@ -13,8 +13,7 @@ SELECT
     FACILITY_TYPE,
     COUNT(DISTINCT FACILITY_ID) AS number_of_facilities
 FROM deliveries_complete
-GROUP BY FACILITY_TYPE
-ORDER BY FACILITY_TYPE;
+GROUP BY FACILITY_TYPE;
 
 
 --	Level of Support per Facility Group

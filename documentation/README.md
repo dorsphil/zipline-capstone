@@ -228,35 +228,6 @@ The following metrics were computed to address the project objectives:
 8. Deliveries where delivery time preceded order time (131 records, 0.33% of data) were excluded from analysis as logically invalid.
 
 
-#####   DASHBOARD WEBSITE
-A localhost dashboard website was built with three pages:
-
-**1. Overview Page**
-
-- Total deliveries
-- Total facilities served
-- Estimated lives saved
-- Project introduction narrative
-
-**2. Impact Page**
-- Regional and district delivery coverage
-- Facility type distribution
-- Emergency response insight
-
-**3. Products Page**
-- Breakdown of delivered product types
-- Emergency product analysis
-- Product importance explanations
-
-Visualizations were created using Chart.js.
-
-
-
-**Conclusion**
-This project demonstrates how data can be used to tell a compelling story about healthcare logistics, operational efficiency,
-and life-saving impact. By combining clean SQL analysis with an intuitive dashboard, the project highlights Zipline’s 
-role in strengthening healthcare delivery across Ghana.
-
 
 **Dorsphil Osei Asuming Animwaa**
 **Data Analyst Intern**

@@ -18,7 +18,7 @@ SELECT
     ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM deliveries_complete), 2) AS pct_of_total_deliveries
 FROM deliveries_complete
 GROUP BY DISTRICT
-ORDER BY total_deliveries DESC;
+ORDER BY total_deliveries DESC; 
 
 
 ----------------------------------------------

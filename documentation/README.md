@@ -35,7 +35,7 @@ The project answers three key questions:
 3. Data Analysis: SQL aggregations and views
 4. Frontend: HTML,CSS,JavaScript
 5. Visualization: Chart.js
-6. Version Control: Git &GitHub
+6. Version Control: Git & GitHub
 
 
 **Data Sources**
@@ -73,7 +73,7 @@ justifying their missing 'SITE_ID' values.
 'Asawinso SDA HSP' was the single exception: it received packages but was missing its 'SITE_ID'.
 The new, valid 'SITE_ID' was sourced directly from the GH2 Zipline Controller Team on 9th Dec, 2025.
 
-````-- check to confirm NULL state ---
+```-- check to confirm NULL state ---
 SELECT FACILITY_NAME, DISTRICT,
        REGION, SITE_ID
        FROM  facilities
@@ -85,10 +85,13 @@ UPDATE facilities
      WHERE FACILITY_NAME = 'Asawinso SDA HSP' AND SITE_ID IS NULL;
 ```
 **TIME_ORDER_CONFIRMED_LOCAL NULLS**
+
 Discovered later that some TIME_ORDER_CONFIRMED_LOCAL values were stored
 as the zero datetime '0000-00-00 00:00:00' instead of NULL.
 This explains why the earlier check
-```SELECT * FROM deliveries WHERE TIME_ORDER_CONFIRMED_LOCAL IS NULL;
+
+```
+SELECT * FROM deliveries WHERE TIME_ORDER_CONFIRMED_LOCAL IS NULL;
 ```
 returned an empty set even though the column looked blank in the source data.
  Since the dataset is expected to start from 2023‑01‑01, any timestamp
@@ -113,7 +116,7 @@ multiple product deliveries (e.g.one row with Paracetamol, another with Diclofen
 These deliveries were part of the same shipment, and no further data cleaning is needed.
 Total number of delivery keys with duplicates: 6188.
 
-````SELECT delivery_key, COUNT (*) AS count 
+```SELECT delivery_key, COUNT (*) AS count 
 FROM deliveries
 GROUP BY delivery_key
 HAVING COUNT(*) >1;
@@ -133,7 +136,7 @@ These records were treated as data-entry inconsistencies and excluded from analy
 
 A cleaned delivery view was created
 
-````CREATE VIEW deliveries_valid AS 
+```CREATE VIEW deliveries_valid AS 
 	SELECT *, TIMESTAMPDIFF(MINUTE, TIME_ORDER_CONFIRMED_LOCAL, TIME_DELIVERED_LOCAL)
 	 AS DELIVERY_DURATION_MINUTES FROM deliveries WHERE TIME_DELIVERED_LOCAL >=  TIME_ORDER_CONFIRMED_LOCAL;
 ```
@@ -157,7 +160,7 @@ ON d.HEALTH_FACILITY_NAME = f.FACILITY_NAME;
 ```
 
 **Data Pipeline**
-````
+```
 -----------------------              -----------------------------
 | deliveries (raw)     | ------------> | facilities (raw)        |
 -----------------------              -----------------------------
@@ -229,8 +232,11 @@ The following metrics were computed to address the project objectives:
 
 
 
+
 **Dorsphil Osei Asuming Animwaa**
+
 **Data Analyst Intern**
+
 **Zipline Ghana**
 
 

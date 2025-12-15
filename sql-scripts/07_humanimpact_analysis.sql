@@ -20,10 +20,6 @@ FROM deliveries_complete
 GROUP BY DISTRICT
 ORDER BY total_deliveries DESC;
 
---ROUND(AVG(DELIVERY_DURATION_MINUTES), 2) AS avg_emergency_delivery_time_min,
-    --MIN(DELIVERY_DURATION_MINUTES) AS fastest_delivery_min,
-    --MAX(DELIVERY_DURATION_MINUTES) AS slowest_delivery_min
-
 
 ----------------------------------------------
 --	Most Delivered Emergency Product Types

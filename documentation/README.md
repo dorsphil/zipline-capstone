@@ -9,6 +9,57 @@ and human impact of Zipline's operations in Ghana.
 Using synthetic delivery and health facility datasets, the project demonstrates how Zipline’s deliveries 
 support health facilities, distribute essential medical products, and respond to life-critical emergencies. 
 The final output is a **localhost dashboard website** supported by a robust SQL data-cleaning and analysis pipeline.
+
+**Project Structure**
+```
+zipline-capstone/
+│
+├── dashboard/                      # Frontend dashboard files
+│   ├── html/
+│   │   ├── index.html              # Home / landing page
+│   │   ├── overview.html           # Operational overview
+│   │   ├── impact.html             # Impact & geographic coverage analysis
+│   │   └── products.html           # Product delivery analysis
+│   │
+│   ├── css/
+│   │   └── style.css               # Global dashboard styles
+│   │
+│   ├── js/
+│   │   ├── overview.js             # Overview page charts
+│   │   ├── impact.js               # Impact page charts & tables
+│   │   └── products.js             # Products page visualizations
+│
+├── data/
+│   ├── original/                   # Raw datasets 
+│   │   ├── Deliveries.csv
+│   │   └── Facilities.csv
+│   │
+│   └── processed/                  # Cleaned & derived JSON files
+│       ├── overview_kpis.json
+│       ├── facilities_by_type.json
+│       ├── deliveries_by_region.json
+│       ├── deliveries_by_district.json
+│       ├── products_by_category.json
+│       ├── emergency_products.json
+│       └── avg_delivery_time_by_product.json
+│
+├── sql-scripts/
+│   └── sql/
+│       ├── 01_create_tables.sql
+│       ├── 02_import_datasets.sql
+│       ├── 03_cleaning_tables.sql
+│       ├── 04_create_views.sql
+│       ├── 05_operationalvalue_analysis.sql
+│       ├── 06_geo_facilitycoverage_analysis.sql
+│       ├── 07_humanimpact_analysis.sql
+|       |── 08_sqljson_conversion.sql
+│
+├── documentation/
+│   ├── screenshots/                # Dashboard screenshots
+│   └── README.md                   # Project documentation
+│
+└── .gitignore
+```
     
 **Project Objectives**
 The project answers three key questions:
@@ -236,6 +287,14 @@ The following metrics were computed to address the project objectives:
 
 9. Dataset did not show 'Facility rural/urban' classification hence was excluded.
 
+#### SQL to JSON Conversion for Dashboard
+
+To support the static frontend dashboard, the results of key SQL analysis queries were exported directly from MySQL into JSON format.
+This was achieved using MySQL’s JSON_OBJECT and JSON_ARRAYAGG functions together with INTO OUTFILE, allowing aggregated metrics 
+(KPIs, regional summaries, facility coverage, and product breakdowns) to be saved as structured .json files.
+
+These JSON files serve as the data source for the dashboard’s visualizations and are loaded in the browser using
+JavaScript and rendered with Chart.js.
 
 ##### LOCALHOST DASHBOARD WEBSITE
 

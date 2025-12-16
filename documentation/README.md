@@ -301,7 +301,7 @@ Shows average delivery duration for each product category, offering insight into
 
 **How to Run the Dashboard Locally**
 
-*Prerequisites*
+**Prerequisites**
 - Python 3 installed
 - A modern web browser (Chrome, Firefox, Edge)
 
@@ -324,10 +324,7 @@ python -m http.server
 ```
 http://localhost:8000
 ```
-The dashboard will load and display all charts using locally stored JSON data.
-
-
-
+*The dashboard will load and display all charts using locally stored JSON data.*
 
 
 

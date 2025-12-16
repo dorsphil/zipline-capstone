@@ -234,6 +234,8 @@ The following metrics were computed to address the project objectives:
    
 8. Deliveries where delivery time preceded order time (131 records, 0.33% of data) were excluded from analysis as logically invalid.
 
+9. Dataset did not show 'Facility rural/urban' classification hence was excluded.
+
 
 ##### LOCALHOST DASHBOARD WEBSITE
 
@@ -296,6 +298,33 @@ which medical products are most critical during urgent situations.
 
 - Average Delivery Time by Product Type (Bar Chart)
 Shows average delivery duration for each product category, offering insight into operational performance and prioritization.
+
+**How to Run the Dashboard Locally**
+
+*Prerequisites*
+- Python 3 installed
+- A modern web browser (Chrome, Firefox, Edge)
+
+**Steps**
+1. Navigate to the dashboard directory:
+```
+cd dashboard
+```
+   
+2. Start a local web server:
+```
+python3 -m http.server
+```
+- On Windows, if python 3 does not work
+```
+python -m http.server
+```
+
+3. Open a browser and visit
+```
+http://localhost:8000
+```
+The dashboard will load and display all charts using locally stored JSON data.
 
 
 

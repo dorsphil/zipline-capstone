@@ -326,6 +326,29 @@ http://localhost:8000
 ```
 *The dashboard will load and display all charts using locally stored JSON data.*
 
+##### SCREENSHOTS
+
+**Overview Page**
+![Overview Page](screenshots/overview_page.png)
+
+**Impact Page**
+![Facility Type](screenshots/facility_by_type.png)
+
+![Regions Served](screenshots/impact_regions.png)
+
+![District Beneficiaries 1](screenshots/impact_districts1.png)
+
+![District Beneficiaries 2](screenshots/impact_districts2.png)
+
+**Products Page**
+![Products Delivered](screenshots/products_delivered.png)
+
+![Emergency Products 1](screenshots/emergency_products1.png)
+
+![Emergency Products 2](screenshots/emergency_products2.png)
+
+![Average Product Delivery Time](screenshots/product_delivery_time.png)
+
 
 
 **Dorsphil Osei Asuming Animwaa**

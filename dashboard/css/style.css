@@ -1,0 +1,359 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f6f8;
+    color: #333;
+}
+/* ===============================
+   Navigation Styling
+================================ */
+nav {
+    background-color: #c62828;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* ===============================
+   Navigation Logo Styling
+================================ */
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+}
+
+/* Navigation links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+}
+
+/* Neutral hover (no red) */
+.nav-links a:hover {
+    color: #222;
+}
+
+
+main {
+    padding: 2rem;
+}
+
+.intro {
+    max-width: 800px;
+    margin-bottom: 2rem;
+}
+
+.kpi-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.kpi-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.kpi-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.kpi-card p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #c62828;
+}
+/* ===============================
+   Impact Page Layout Fixes
+================================ */
+
+/* Section spacing */
+.chart-section {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.chart-section h3 {
+    margin-bottom: 40px;
+}
+
+/* ===============================
+   Chart Containers
+================================ */
+
+.chart-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Bar chart sizing */
+.chart-bar {
+    width: 75%;
+    height: 450px;
+    margin: 0 auto;
+}
+
+/* Pie chart sizing */
+.chart-pie {
+    width: 350px;
+    height: 350px;
+    margin: 0 auto;
+}
+
+/* Ensure canvas fills container */
+.chart-box canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ===============================
+   District Table Styling
+================================ */
+
+.table-container {
+    max-width: 800px;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+#districtTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#districtTable th,
+#districtTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Header styling */
+#districtTable thead {
+    background-color: #f0f0f0;
+}
+
+/* Alternating row colors */
+#districtTable tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+#districtTable tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+/* ===============================
+   Emergency Products Table Styling
+================================ */
+
+#emergencyProductsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#emergencyProductsTable th,
+#emergencyProductsTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Header styling */
+#emergencyProductsTable thead {
+    background-color: #f0f0f0;
+}
+
+/* Alternating row colors */
+#emergencyProductsTable tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+#emergencyProductsTable tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+/* ===============================
+   Global Brand Styling
+================================ */
+
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: #222;
+    background-color: #ffffff;
+}
+
+.brand {
+    color: #e10600;
+    font-weight: bold;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+}
+
+nav a.active,
+nav a:hover {
+    color: #e10600;
+}
+
+/* ===============================
+   Home Page Styling
+================================ */
+
+.home-page {
+    background-color: #f9f9f9;
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #ffffff;
+}
+
+.hero h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 1.1rem;
+}
+
+.cta-button {
+    background-color: #e10600;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.cta-button:hover {
+    opacity: 0.9;
+}
+
+/* Info cards */
+.home-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 60px 40px;
+}
+
+.info-card {
+    background: white;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.info-card h3 {
+    color: #e10600;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* ===============================
+   Drone Image Styling
+================================ */
+
+.drone-image {
+    width: 100vw;  /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    margin: 0;     
+    padding: 0;    
+    background-image: url("../assets/Zipline_Drone_Launch.jpg"); 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-radius: 0;  
+    border: none;      
+    box-shadow: none; 
+}
+
+.drone-image .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45);  /* Dark overlay for text readability */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+    padding: 20px;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: center;     
+
+    .drone-image h3 {
+        font-size: 30px;       /* Headline size */
+        margin-bottom: 20px;
+        font-weight: 700;      /* Bold headline */
+    }
+
+    .drone-image p {
+        margin-bottom: 16px;
+        max-width: 800px;      /* Keeps text from stretching too wide */
+        font-size: 18px;       /* Ensures text is readable */
+    }
+}

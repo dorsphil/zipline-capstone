@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zipline Ghana - Impact</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-left">
+        <img src="../assets/zipline-logo.png" alt="Zipline Logo" class="logo">
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="impact.html">Impact</a></li>
+        <li><a href="products.html">Products</a></li>
+    </ul>
+</nav>
+
+<main>
+
+    <!-- Intro -->
+    <section class="intro">
+        <h2>Operational Impact</h2>
+        <p>
+            This page highlights the geographic and institutional impact of Zipline's
+            delivery operations across Ghana, showing how healthcare facilities
+            and communities are supported.
+        </p>
+    </section>
+
+        <!-- Facility coverage -->
+    <section class="chart-section">
+        <h3>Facility Coverage by Type</h3>
+        <div class="chart-box chart-bar">
+            <canvas id="facilityTypeChart"></canvas>
+        </div>
+         <p class="chart-note">
+            This chart shows the distribution of healthcare facilities served by Zipline Ghana.<br>
+            CHPS and Health Centres account for the majority, highlighting Zipline's role in 
+            strengthening primary healthcare delivery.
+         </p>
+    </section>
+
+    <!-- Regions served -->
+    <section class="chart-section">
+        <h3>Regions Served</h3>
+        <div class="chart-box chart-pie">
+            <canvas id="regionChart"></canvas>
+        </div>
+        <p class="chart-note">
+            Delivery volumes vary across regions, reflecting differences in population density and healthcare access.<br>
+            Higher volumes indicate areas with greater demand and health system reliance.
+        </p>
+    </section>
+
+    <!-- District-level beneficiaries -->
+    <section class="chart-section">
+        <h3>District-Level Beneficiaries</h3>
+        <div class="table-container">
+            <table id="districtTable">
+                <thead>
+                    <tr>
+                        <th>District</th>
+                        <th>Total Deliveries</th>
+                        <th>% of Total Deliveries</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <p class="chart-note">
+            This table provides a summary of the distribution of deliveries across districts.<br>
+            Higher volumes indicate areas with greater demand and health system reliance.
+        </p>
+    </section>
+
+
+<script src="../js/impact.js"></script>
+
+</body>
+</html>

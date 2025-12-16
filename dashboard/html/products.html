@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zipline Ghana - Products</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-left">
+        <img src="../assets/zipline-logo.png" alt="Zipline Logo" class="logo">
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="impact.html">Impact</a></li>
+        <li><a href="products.html">Products</a></li>
+    </ul>
+</nav>
+
+
+<main>
+
+    <!-- Intro -->
+    <section class="intro">
+        <h2>Delivered Products & Medical Importance</h2>
+        <p>
+            This page explores the types of medical products delivered by Zipline,
+            highlighting their importance in emergency response and healthcare logistics.
+        </p>
+    </section>
+
+    <!-- Product types delivered -->
+    <section class="chart-section">
+        <h3>Product Types Delivered</h3>
+        <div class="chart-box chart-bar">
+            <canvas id="productsCategoryChart"></canvas>
+        </div>
+        <p class="chart-note">
+            This chart shows the distribution of delivered medical product categories,
+            reflecting Zipline's role in supplying essential healthcare commodities.<br>
+            Vaccines and medical products dominate deliveries, also emphasizing Zipline's
+            role in routine immunization
+        </p>
+    </section>
+
+    <!-- Emergency products -->
+    <section class="chart-section">
+        <h3>Most Delivered Emergency Product Types</h3>
+        <div class="table-container">
+            <table id="emergencyProductsTable">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Subcategory</th>
+                        <th>Emergency Deliveries</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <p class="chart-note">
+            Emergency deliveries represent critical, time-sensitive medical needs,
+            potentially associated with life-saving interventions.
+        </p>
+    </section>
+
+    <!-- Average delivery time -->
+    <section class="chart-section">
+        <h3>Average Delivery Time by Product Type</h3>
+        <div class="chart-box chart-bar">
+            <canvas id="avgDeliveryTimeChart"></canvas>
+        </div>
+        <p class="chart-note">
+            Faster delivery times for certain product categories indicate operational
+            prioritization and efficiency in emergency healthcare logistics.
+        </p>
+    </section>
+
+</main>
+
+<script src="../js/products.js"></script>
+
+</body>
+</html>

@@ -30,12 +30,16 @@ The project answers three key questions:
 
 
 ## TOOLS USED
-1. Database: MySQL
+1. Database: MySQL - Data storage, cleaning, aggregation, and JSON generation
 2. Query Language: SQL
 3. Data Analysis: SQL aggregations and views
-4. Frontend: HTML,CSS,JavaScript
+4. Frontend: 
+   - HTML -  Page structure
+   - CSS - Layout, styling, responsiveness
+   - JavaScript -  Data fetching and DOM manipulation
 5. Visualization: Chart.js
-6. Version Control: Git & GitHub
+6.  Data fetching and DOM manipulation
+7. Version Control: Git & GitHub
 
 
 **Data Sources**
@@ -229,6 +233,71 @@ The following metrics were computed to address the project objectives:
    and combines delivery and facility data.
    
 8. Deliveries where delivery time preceded order time (131 records, 0.33% of data) were excluded from analysis as logically invalid.
+
+
+##### LOCALHOST DASHBOARD WEBSITE
+
+This project includes a static, data-driven dashboard website built with HTML, CSS, and JavaScript, designed to visualize
+and communicate insights derived from Zipline’s delivery operations data in Ghana. 
+The dashboard runs locally and uses preprocessed JSON files generated from SQL queries as its data source.
+
+The dashboard consists of three main pages, each serving a distinct analytical purpose.
+
+**1. Overview Page**
+The Overview page provides a high-level snapshot of Zipline’s operational scale and impact.
+
+Key Features:
+- Total Deliveries
+Displays the total number of completed deliveries across the dataset.
+
+- Total Facilities Served
+Shows the number of distinct healthcare facilities reached.
+
+- Estimated People Reached
+Approximates human impact using emergency-priority deliveries as a proxy.
+
+- Narrative Introduction
+A short contextual paragraph explaining:
+The scope of the data (single operational center, one-year period)
+The synthetic nature of the dataset
+The purpose of the dashboard (operational value and impact storytelling)
+These metrics are presented using KPI cards, allowing users to immediately grasp the scale and relevance of Zipline’s operations.
+
+**2. Impact Page**
+The Impact page focuses on geographic and facility reach.
+
+Visualizations and Tables:
+- Facility Coverage by Type (Bar Chart)
+Shows the number of distinct facilities served, grouped by facility type (e.g., hospitals, clinics).
+
+- Deliveries by Region (Pie Chart)
+Visualizes how deliveries are distributed across regions, emphasizing geographic coverage.
+
+- District-Level Beneficiaries (Table)
+A detailed table showing:
+- Total deliveries per district
+- Percentage contribution to overall deliveries
+- The table includes clear borders, alternating row colors, and readable spacing to improve clarity.
+
+**Note on Rural vs Urban Impact:**
+The source dataset does not explicitly label facilities as rural or urban. 
+As a result, this distinction could not be reliably derived and is acknowledged as a limitation of the analysis.
+
+**3. Products Page**
+The Products page explains what Zipline delivers and why those deliveries matter.
+
+- Product Types Delivered (Bar Chart)
+Displays delivery volume by product category (e.g., Vaccines, Medical, Blood, Controlled Substances), 
+--including percentage contribution to total deliveries.
+
+- Most Delivered Emergency Products (Table)
+Breaks down emergency deliveries by product category and subcategory, highlighting 
+which medical products are most critical during urgent situations.
+
+- Average Delivery Time by Product Type (Bar Chart)
+Shows average delivery duration for each product category, offering insight into operational performance and prioritization.
+
+
 
 
 

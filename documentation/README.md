@@ -381,7 +381,7 @@ python -m http.server
 
 3. Open a browser and visit
 ```
-http://localhost:8000
+http://localhost:8000/dashboard/html/index.html
 ```
 *The dashboard will load and display all charts using locally stored JSON data.*
 

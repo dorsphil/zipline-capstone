@@ -1,4 +1,4 @@
-fetch("/dashboard/data/processed/overview_kpis.json")
+fetch("/data/processed/overview_kpis.json")
     .then(response => response.json())
     .then(data => {
         document.getElementById("totalDeliveries").textContent =

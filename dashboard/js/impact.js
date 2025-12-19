@@ -1,7 +1,7 @@
 // ===============================
 // Facility coverage (bar chart)
 // ===============================
-fetch("/dashboard/data/processed/facilities_by_type.json")
+fetch("/data/processed/facilities_by_type.json")
     .then(res => res.json())
     .then(data => {
         new Chart(document.getElementById("facilityTypeChart"), {

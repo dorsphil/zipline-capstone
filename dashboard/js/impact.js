@@ -24,7 +24,7 @@ fetch("/data/processed/facilities_by_type.json")
 // ===============================
 // Regions served (pie chart)
 // ===============================
-fetch("/dashboard/data/processed/deliveries_by_region.json")
+fetch("/data/processed/deliveries_by_region.json")
     .then(res => res.json())
     .then(data => {
         new Chart(document.getElementById("regionChart"), {
@@ -46,7 +46,7 @@ fetch("/dashboard/data/processed/deliveries_by_region.json")
 // ===============================
 // District-level beneficiaries (table)
 // ===============================
-fetch("/dashboard/data/processed/deliveries_by_district.json")
+fetch("/data/processed/deliveries_by_district.json")
     .then(res => res.json())
     .then(data => {
         const tbody = document.querySelector("#districtTable tbody");

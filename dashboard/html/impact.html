@@ -5,6 +5,8 @@
     <title>Zipline Ghana - Impact</title>
     <link rel="stylesheet" href="/dashboard/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script> 
+
 </head>
 <body>
 
@@ -34,49 +36,105 @@
         </p>
     </section>
 
+
+    <!-- Deliveries by Facility Type -->
+        <section class="chart-section">
+            <h3>Reaching the Frontlines: Deliveries by Facility Type</h3>
+            <div class="chart-box chart-bar">
+                <canvas id="facilityDeliveriesChart"></canvas>
+            </div>
+            <p class="chart-note">
+                This chart compares the volume of deliveries received by each facility type.
+                Approximately 63.4% of all deliveries are directed to CHPS compounds, the most frontline 
+                tier of Ghana's health system. 
+            </p>
+            <p><b>Interpretation:</b><br>
+            By prioritizing CHPS compounds and Health Centres (together accounting for nearly 90% of volume),
+            Zipline is effectively bypassing road infrastructure barriers to ensure that rural patients receive 
+            the same quality of care as those in urban centers.
+            </p>
+            <p><b>Insight:</b><br>
+                This distribution proves Zipline is not just a "hospital supplier" but the primary circulatory
+                system for community-based healthcare, sustaining local clinics that were previously the hardest to reach.
+            </p>
+        </section>
+
         <!-- Facility coverage -->
     <section class="chart-section">
-        <h3>Facility Coverage by Type</h3>
-        <div class="chart-box chart-bar">
+        <h3>The Zipline Ecosystem: Facility Coverage by Type</h3>
+        <div class="chart-box chart-pie">
             <canvas id="facilityTypeChart"></canvas>
         </div>
          <p class="chart-note">
-            This chart shows the distribution of healthcare facilities served by Zipline Ghana.<br>
-            CHPS and Health Centres account for the majority, highlighting Zipline's role in 
-            strengthening primary healthcare delivery.
-         </p>
+            This chart displays the distribution of healthcare facility types supported by Zipline Ghana,
+            including CHPS compounds, health centres, hospitals, and other facilities.
+        </p> 
+        <p><b>Interpretation:</b> <br>
+            The dominance of CHPS compounds and health centres is highly significant. These facilities 
+            typically operate at the frontline of primary healthcare, often serving rural or underserved 
+            communities with limited access to large hospitals.
+        </p>
+        <p>
+            Rather than concentrating services only in urban or tertiary facilities, the data shows that 
+            Zipline's operations are intentionally embedded within the primary healthcare system, where 
+            healthcare supply gaps are most likely to disrupt care.
+        </p>
+        <p><b>Insight:</b> <br>
+            This pattern demonstrates that Zipline's value is not limited to high-profile emergency deliveries.
+            Instead, it plays a sustained role in strengthening everyday healthcare delivery, ensuring that 
+            routine services such as immunization, maternal care, and essential treatments are consistently supported.
+        </p>
     </section>
 
     <!-- Regions served -->
     <section class="chart-section">
-        <h3>Regions Served</h3>
+        <h3>Geographic Footprint: Regions Served</h3>
         <div class="chart-box chart-pie">
             <canvas id="regionChart"></canvas>
         </div>
         <p class="chart-note">
-            Delivery volumes vary across regions, reflecting differences in population density and healthcare access.<br>
-            Higher volumes indicate areas with greater demand and health system reliance.
+            This chart illustrates how deliveries are distributed across regions in Ghana, showing that the
+            Western North Region is the primary beneficiary with the highest share of 67.9% of total volume.
         </p>
+
+        <p><b>Interpretation:</b><br>
+            Regional differences in volume are a direct response to logistical need rather than population size. 
+            High percentages in regions like Western North and Ashanti reflect areas where Zipline bypasses 
+            severe road infrastructure gaps and "cold chain" deserts. By concentrating flights in these zones,
+            the system effectively equalizes healthcare access, ensuring a patient in a remote western district 
+            receives the same standard of care as one in a capital city.
+            </p>
+
+        <p><b>Insight:</b><br>
+           Rather than evenly distributing deliveries for appearance's sake, the data shows that Zipline's 
+           operations are demand-driven and impact-oriented, concentrating resources where rapid medical delivery 
+           has the strongest effect on healthcare outcomes.</p>
     </section>
 
     <!-- District-level beneficiaries -->
     <section class="chart-section">
-        <h3>District-Level Beneficiaries</h3>
-        <div class="table-container">
-            <table id="districtTable">
-                <thead>
-                    <tr>
-                        <th>District</th>
-                        <th>Total Deliveries</th>
-                        <th>% of Total Deliveries</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+        <h3>Community Impact: District-Level Beneficiaries</h3>
+        <div class="chart-box chart-bar">
+            <canvas id="districtChart"></canvas>
         </div>
+
         <p class="chart-note">
-            This table provides a summary of the distribution of deliveries across districts.<br>
-            Higher volumes indicate areas with greater demand and health system reliance.
+            This horizontal bar chart illustrates the distribution of delivery volumes across various districts,
+            highlighting a significant variance in service utilization. Sefwi Wiawso leads with 22.02% of 
+            total deliveries, followed by Aowin (14.44%) and Sefwi Akontombra (9.55%), showing a clear concentration 
+            of activity in specific geographic clusters.
+        </p>
+        <p><b>Interpretation:</b><br>
+        The data reveals that a small number of top-performing districts account for a disproportionately large 
+        share of deliveries. This high concentration typically identifies "service hotspots"—areas characterized 
+        by a high volume of healthcare facilities, limited alternative road-based supply chains, or a greater
+        clinical reliance on time-critical medical logistics.
+        </p>
+        <p><b>Insight:</b><br>
+            This is one of the clearest demonstrations of Zipline's value. The districts most served are likely 
+            those where traditional logistics would struggle to deliver consistently, making drone delivery
+             not a convenience, but a necessity. In these districts, Zipline effectively acts as an extension 
+             of the healthcare system itself, enabling facilities to function reliably despite infrastructure constraints.
         </p>
     </section>
 

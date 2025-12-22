@@ -5,6 +5,8 @@
     <title>Zipline Ghana - Products</title>
     <link rel="stylesheet" href="/dashboard/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
 </head>
 <body>
 
@@ -28,57 +30,86 @@
     <section class="intro">
         <h2>Delivered Products & Medical Importance</h2>
         <p>
-            This page explores the types of medical products delivered by Zipline,
-            highlighting their importance in emergency response and healthcare logistics.
+            This page analyzes the types of medical products delivered by Zipline and their role
+            in supporting routine healthcare services and emergency medical response across Ghana.
         </p>
     </section>
 
     <!-- Product types delivered -->
     <section class="chart-section">
-        <h3>Product Types Delivered</h3>
+        <h3>Inventory Composition: Product Types Delivered</h3>
         <div class="chart-box chart-bar">
             <canvas id="productsCategoryChart"></canvas>
         </div>
         <p class="chart-note">
-            This chart shows the distribution of delivered medical product categories,
-            reflecting Zipline's role in supplying essential healthcare commodities.<br>
-            Vaccines and medical products dominate deliveries, also emphasizing Zipline's
-            role in routine immunization
+            This chart breaks down deliveries by broad medical product categories, such as vaccines, essential 
+            medicines, blood products, and emergency supplies,revealing that Vaccines (51.6%) and
+            Medical supplies (46.9%) constitute the overwhelming majority of Zipline's operations.
         </p>
+        <p><b>Interpretation:</b><br>
+            The prominence of vaccines and essential medical products underscores Zipline's role in supporting
+            preventive and routine healthcare, not just emergency response. These deliveries are foundational
+            to public health outcomes, particularly for immunization programs and chronic care continuity.
+        </p>
+
+        <p><b>Insight:</b><br>
+            By ensuring consistent access to routine medical supplies, Zipline helps reduce stockouts, 
+            missed vaccinations, and treatment delays; issues that usually affect rural and remote communities.
+        </p>
+
     </section>
 
     <!-- Emergency products -->
     <section class="chart-section">
-        <h3>Most Delivered Emergency Product Types</h3>
-        <div class="table-container">
-            <table id="emergencyProductsTable">
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Subcategory</th>
-                        <th>Emergency Deliveries</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+        <h3>Critical Care Demand: Emergency Delivery Breakdown</h3>
+        <div class="chart-box chart-bar">
+            <canvas id="emergencyProductsChart"></canvas>
         </div>
+
         <p class="chart-note">
-            Emergency deliveries represent critical, time-sensitive medical needs,
-            potentially associated with life-saving interventions.
+            This horizontal bar chart ranks the specific products requested during emergency flights by volume. 
+            Medical Fluids (25.3%) and critical blood products—including Whole Blood (22.2%) and 
+            Fresh Frozen Plasma (22.0%) comprising the top three most urgent deliveries
+        </p>
+        <p><b>Interpretation:</b><br>
+            Products such as fluids, blood products, and cardiovascular supplies dominate emergency deliveries,
+            reflecting their critical role in trauma care, obstetric emergencies, and acute medical interventions.
+            The long tail of smaller-volume emergency products highlights the breadth of emergencies supported, 
+            even when individual product demand is low.
+        </p>
+
+        <p><b>Insight:</b><br>
+            This chart demonstrates that Zipline's emergency logistics system is not narrowly specialized. 
+            Instead, it supports a wide spectrum of life-saving interventions, enabling facilities to 
+            respond to diverse and unpredictable medical emergencies with confidence.
         </p>
     </section>
 
     <!-- Average delivery time -->
     <section class="chart-section">
-        <h3>Average Delivery Time by Product Type</h3>
+        <h3>Operational Tiering: Average Delivery Time by Product Type</h3>
         <div class="chart-box chart-bar">
             <canvas id="avgDeliveryTimeChart"></canvas>
         </div>
         <p class="chart-note">
-            Faster delivery times for certain product categories indicate operational
-            prioritization and efficiency in emergency healthcare logistics.
+            This vertical bar chart compares the average delivery times for various medical categories, 
+            demonstrating clear operational tiering based on clinical urgency.
+            Blood products lead with the fastest average delivery time of 43.0 minutes, followed by 
+            Medical Supplies at 57.4 minutes and Vaccines at 91.1 minutes.
+        </p>
+
+        <p> <b>Interpretation:</b><br>
+            Faster delivery times for emergency-related products indicate operational prioritization, 
+            where time-critical items are dispatched with urgency. More stable delivery times for routine
+            products reflect optimized scheduling without compromising reliability.
         </p>
     </section>
+
+        <p><b>Insight:</b><br>
+            This differentiation shows operational maturity. Zipline's system does not treat all deliveries 
+            equally; it dynamically balances speed and efficiency based on clinical urgency, aligning logistics 
+            with clinical decisions with patient needs.
+        </p>
 
 </main>
     

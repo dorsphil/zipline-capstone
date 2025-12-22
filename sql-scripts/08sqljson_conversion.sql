@@ -73,6 +73,33 @@ FROM (
     ORDER BY total_deliveries DESC
 ) t;
 
+-- Deliveries by facility type
+SELECT JSON_ARRAYAGG(
+    JSON_OBJECT(
+        'facility_type', facility_type,
+        'total_deliveries', total_deliveries,
+        'pct_of_total_deliveries', pct_of_total_deliveries
+    )
+)
+INTO OUTFILE '/var/lib/mysql-files/deliveries_by_facility_type.json'
+FROM (
+    SELECT
+        f.facility_type,
+        COUNT(*) AS total_deliveries,
+        ROUND(
+            COUNT(*) * 100.0 / (SELECT COUNT(*) FROM deliveries_complete),
+            2
+        ) AS pct_of_total_deliveries
+    FROM deliveries_complete d
+    JOIN facilities f
+        ON d.facility_id = f.facility_id
+    GROUP BY f.facility_type
+    ORDER BY total_deliveries DESC
+) t;
+
+
+
+
 
 -- =====================================
 --          PRODUCTS PAGE

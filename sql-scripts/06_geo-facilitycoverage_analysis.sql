@@ -29,7 +29,21 @@ SELECT
 FROM deliveries_complete
 GROUP BY FACILITY_TYPE
 ORDER BY total_deliveries DESC;
-
+/*
+    --- deliveries per each facility type
+    SELECT
+        f.facility_type,
+        COUNT(*) AS total_deliveries,
+        ROUND(
+            COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (),
+            2
+        ) AS pct_of_total_deliveries
+    FROM deliveries_complete d
+    JOIN facilities f
+        ON d.facility_id = f.facility_id
+    GROUP BY f.facility_type
+    ORDER BY total_deliveries DESC;
+*/
 --	Priority Distribution by Facility Type
 SELECT 
     FACILITY_TYPE,
@@ -74,3 +88,6 @@ FROM (
 ) AS facility_delivery_counts
 GROUP BY FACILITY_TYPE
 ORDER BY max_deliveries_per_facility DESC;
+
+
+

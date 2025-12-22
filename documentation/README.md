@@ -409,6 +409,41 @@ http://localhost:8000/dashboard/html/index.html
 ![Average Product Delivery Time](screenshots/product_delivery_time.png)
 
 
+##### Design Decisions & Visualization Refinements
+**Purpose of This Section**
+This section documents key analytical and visualization decisions made during dashboard development to improve clarity, 
+interpretability, and storytelling impact. These refinements ensure that insights are communicated effectively to both 
+technical and non-technical audiences.
+
+**A. Chart Selection & Layout Decisions**
+- Pie charts were used where the objective was to show proportional contribution (e.g., facility coverage and regional delivery share).
+- Bar and horizontal bar charts were used where comparisons across categories or locations were more important than proportionality.
+- Horizontal bar charts were preferred for datasets with many categories or long labels, improving readability and reducing label crowding.
+
+**B. Percentage-Based Interpretation**
+- Percentages were computed and displayed alongside raw values to support relative interpretation, especially where total volumes varied significantly.
+- For pie charts, percentage labels were placed directly on slices to reduce reliance on legends and tooltips.
+- For bar charts, percentage labels were positioned at the end of bars to support quick comparison without visual tracing.
+
+**C. Handling Small Values & Visual Crowding**
+- For pie charts with very small segments, data labels were conditionally positioned outside the slice to prevent overlap.
+- Layout padding and legend repositioning were applied to ensure that external labels did not obscure legends or chart content.
+- Conditional styling (background boxes, borders, font color changes) was used to maintain readability for small-percentage labels.
+
+**D. Minimum Bar Length Trade-off**
+- A minimum bar length was applied to some bar charts to ensure that very small values remained visible.
+- This approach was intentionally not used universally, as it can distort perceived magnitude differences.
+- For emergency product analysis, a horizontal bar layout and percentage labels were prioritized instead of enforcing minimum bar length.
+
+**E. Tooltip vs On-Chart Labels**
+- Tooltips were retained to show raw values and precise percentages for detailed inspection.
+- On-chart labels were added to support immediate insight without interaction, improving accessibility and presentation clarity.
+- This dual-layer approach balances analytical depth with executive-level readability.
+
+**F. Data Processing & JSON Integration**
+- Processed datasets were exported as structured JSON files to decouple data processing from visualization logic.
+- This approach improves maintainability, supports future updates, and allows charts to be regenerated without modifying SQL logic.
+- Manual JSON creation was used where system constraints (e.g., file export permissions) made direct database export impractical.
 
 **Dorsphil Osei Asuming Animwaa**
 

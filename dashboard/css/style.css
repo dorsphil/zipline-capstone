@@ -98,8 +98,8 @@ main {
 
 /* Section spacing */
 .chart-section {
-    margin-top: 30px;
-    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 60px;
 }
 
 .chart-section h3 {
@@ -125,10 +125,12 @@ main {
 
 /* Pie chart sizing */
 .chart-pie {
-    width: 350px;
-    height: 350px;
+    width: 600px;
+    height: 600px;
     margin: 0 auto;
 }
+
+
 
 /* Ensure canvas fills container */
 .chart-box canvas {

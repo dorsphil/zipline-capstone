@@ -72,12 +72,34 @@ fetch("../../data/processed/products_by_category.json")
     });
 
 // =====================================
-// Emergency Product Types (HORIZONTAL)
+// Emergency Product Types (FIXED)
 // =====================================
 fetch("../../data/processed/emergency_products.json")
     .then(res => res.json())
-    .then(data => {
+    .then(rawData => {
+        // 1. DATA CLEANUP: Merge duplicates and aggregate counts
+        // This ensures categories like "ER and surgical supplies" don't appear twice
+        const aggregatedData = rawData.reduce((acc, curr) => {
+            const label = curr.use_case_subcategory || "Unknown";
+            if (!acc[label]) {
+                acc[label] = 0;
+            }
+            acc[label] += curr.emergency_delivery_count;
+            return acc;
+        }, {});
+
+        // 2. Convert back to array and sort by count descending
+        const data = Object.keys(aggregatedData)
+            .map(key => ({
+                use_case_subcategory: key,
+                emergency_delivery_count: aggregatedData[key]
+            }))
+            .sort((a, b) => b.emergency_delivery_count - a.emergency_delivery_count);
+
         const total = data.reduce((s, d) => s + d.emergency_delivery_count, 0);
+
+        // Register the datalabels plugin if not already done globally
+        Chart.register(ChartDataLabels);
 
         new Chart(document.getElementById("emergencyProductsChart"), {
             type: "bar",
@@ -88,7 +110,7 @@ fetch("../../data/processed/emergency_products.json")
                     data: data.map(d => d.emergency_delivery_count),
                     borderRadius: 5,
                     borderSkipped: false,
-                    backgroundColor: data.map((_, i) => `rgba(0, 150, 136, ${1 - (i / data.length) * 0.7})`),
+                    backgroundColor: data.map((_, i) => `rgba(0, 150, 136, ${1 - (i / data.length) * 0.8})`),
                     borderColor: 'rgb(0, 150, 136)',
                     borderWidth: 1
                 }]
@@ -98,14 +120,14 @@ fetch("../../data/processed/emergency_products.json")
                 responsive: true,
                 maintainAspectRatio: false,
                 layout: {
-                    padding: { right: 60, bottom: 20 }
+                    // Increased right padding to prevent percentage labels from clipping
+                    padding: { right: 80, bottom: 20, left: 10 } 
                 },
                 scales: {
                     x: { 
                         display: true, 
                         grid: { display: false },
                         ticks: { display: false },
-                        // ADDED X-AXIS LABEL
                         title: {
                             display: true,
                             text: 'Delivery Volume',
@@ -114,7 +136,10 @@ fetch("../../data/processed/emergency_products.json")
                     },
                     y: { 
                         grid: { display: false },
-                        // ADDED Y-AXIS LABEL
+                        ticks: {
+                            autoSkip: false, // Prevents Chart.js from hiding labels to save space
+                            font: { size: 11 }
+                        },
                         title: {
                             display: true,
                             text: 'Product Type',
@@ -134,8 +159,10 @@ fetch("../../data/processed/emergency_products.json")
                         }
                     },
                     datalabels: {
+                        display: true, // Force display
                         anchor: "end",
                         align: "right",
+                        offset: 5,
                         formatter: v => `${((v / total) * 100).toFixed(1)}%`,
                         font: { weight: "bold", size: 10 },
                         color: "#444"

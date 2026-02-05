@@ -13,7 +13,7 @@ SELECT
 	f.FACILITY_TYPE,
 	f.DISTRICT,
 	f.REGION,
-	f. SITE_ID
+	f.SITE_ID
 FROM deliveries_valid d
 INNER JOIN facilities f
 ON d.HEALTH_FACILITY_NAME = f.FACILITY_NAME;

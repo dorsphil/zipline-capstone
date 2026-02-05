@@ -365,9 +365,9 @@ Shows average delivery duration for each product category, offering insight into
 - A modern web browser (Chrome, Firefox, Edge)
 
 **Steps**
-1. Navigate to the dashboard directory:
+1. Navigate to the zipline-capstone directory:
 ```
-cd dashboard
+cd zipline-capstone
 ```
    
 2. Start a local web server:
@@ -381,7 +381,7 @@ python -m http.server
 
 3. Open a browser and visit
 ```
-http://localhost:8000/dashboard/html/index.html
+http://localhost:8000/dashboard/html
 ```
 *The dashboard will load and display all charts using locally stored JSON data.*
 

@@ -6,7 +6,7 @@ SET GLOBAL local_infile = 1;
 -- import Deliveries.csv file
 -- maps csv columns directly to deliveries table colums
 
-LOAD DATA LOCAL INFILE '/home/dorsphil/Desktop/zipline-capstone/data/Deliveries.csv'
+LOAD DATA LOCAL INFILE '/home/dorsphil/Desktop/zipline-capstone/data/original/Deliveries.csv'
      INTO TABLE deliveries
      FIELDS TERMINATED BY ',' 
      ENCLOSED BY '"'
@@ -19,7 +19,7 @@ LOAD DATA LOCAL INFILE '/home/dorsphil/Desktop/zipline-capstone/data/Deliveries.
 -- import health_facility_records.csv
 -- maps csv columns directly to facilities table columns
 
-LOAD DATA LOCAL INFILE '/home/dorsphil/Desktop/zipline-capstone/data/health_facility_records.csv'
+LOAD DATA LOCAL INFILE '/home/dorsphil/Desktop/zipline-capstone/data/original/health_facility_records.csv'
      INTO TABLE facilities
      FIELDS TERMINATED BY ',' 
      ENCLOSED BY '"'

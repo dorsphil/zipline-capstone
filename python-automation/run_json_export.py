@@ -3,12 +3,16 @@ import os
 import re
 from dotenv import load_dotenv
 
-# Load your database credentials
+# Load database credentials from the .env file
 load_dotenv()
 
 def run_json_export(sql_filename):
+    """
+    Executes SQL queries that use the 'INTO OUTFILE' command to 
+    save analysis results directly from MySQL into JSON files.
+    """
     try:
-        # 1. Connect to the database
+        # 1. Establish connection to the database
         db = mysql.connector.connect(
             host=os.getenv("DB_HOST"),
             user=os.getenv("DB_USER"),
@@ -17,39 +21,47 @@ def run_json_export(sql_filename):
         )
         cursor = db.cursor()
 
-        # 2. Read the SQL file
+        # 2. Open and Read the SQL conversion script
         with open(sql_filename, 'r') as f:
             content = f.read()
             
-            # Strip out single-line comments so they don't interfere with execution
+            # REGEX CLEANING: 
+            # Removes single-line comments (--). 
+            # This is vital because comments inside the query can break the split(';') function.
             clean_content = re.sub(r'--.*', '', content)
             
-            # Split into individual commands
+            # Split the script into individual export commands
             commands = clean_content.split(';')
 
         print(f"🚀 Running JSON export automation from: {sql_filename}")
 
-        # 3. Execute each query exactly as written
+        # 3. Iterate through each export command
         for command in commands:
             query = command.strip()
             if query:
-                print(f" Executing export command...")
+                print(f"  Sending export command to MySQL engine...")
+                # We execute the query, but we DO NOT use fetchall().
+                # This is because 'INTO OUTFILE' writes the data directly to your disk,
+                # so there are no rows sent back to Python to display.
                 cursor.execute(query)
-                # Note: No print(results) here because INTO OUTFILE doesn't return rows to Python
         
+        # Save any changes (though OUTFILE is mostly a write operation)
         db.commit()
-        print("\n Execution finished. If no errors appeared, your JSON files have been generated.")
+        print("\n Execution finished. If no 'File already exists' errors appeared, your JSON files are ready!")
 
     except mysql.connector.Error as err:
-        # This will catch the 'File already exists' error (Error 1086) 
-        # or permission errors (Error 1290/13)
+        # Catch specific MySQL errors:
+        # Error 1086: The JSON file already exists in the folder.
+        # Error 1290: MySQL 'secure_file_priv' restriction is blocking the write.
         print(f" MySQL Error: {err}")
     except Exception as e:
+        # Catch general Python errors (like file path issues)
         print(f" System Error: {e}")
     finally:
+        # Always close the connection
         if 'db' in locals() and db.is_connected():
             cursor.close()
             db.close()
 
-# Run the automation
-run_json_export('sql-scripts/08_sqljson_conversion.sql')
+# PATH ADJUSTMENT: Using '../' to go back one level from 'python_automation_files'
+run_json_export('../sql-scripts/08_sqljson_conversion.sql')

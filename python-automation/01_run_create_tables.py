@@ -2,7 +2,7 @@ import mysql.connector
 import os
 from dotenv import load_dotenv
 
-# Load the .env file so Python can access your DB_HOST, DB_USER, and DB_PASSWORD
+# Load the .env file so Python can access the DB_HOST, DB_USER, and DB_PASSWORD
 load_dotenv()
 
 def execute_sql_file(filename):
@@ -10,7 +10,7 @@ def execute_sql_file(filename):
     Connects to the MySQL server and builds the initial database 
     and table structures from a SQL file.
     """
-    # Initialize the connection using variables from your .env file
+    # Initialize the connection using variables from the .env file
     db = mysql.connector.connect(
         host=os.getenv("DB_HOST"),
         user=os.getenv("DB_USER"),
@@ -31,10 +31,10 @@ def execute_sql_file(filename):
         full_script = "".join(clean_lines)
         
         # Step 2: Split the giant string into individual commands using the semicolon (;)
-        # This allows us to send commands to MySQL one at a time
+        # This allows sending commands to MySQL one at a time
         sql_commands = full_script.split(';')
 
-    # Step 3: Loop through the list of commands and execute them
+    # Step 3: Loops through the list of commands and execute them
     for command in sql_commands:
         clean_command = command.strip() # Remove extra spaces or empty lines
         if clean_command: 
@@ -53,5 +53,5 @@ def execute_sql_file(filename):
     db.close()
     print("\n Database and Tables created successfully!")
 
-# PATH ADJUSTMENT: Using '../' to find the folder outside of 'python_automation_files'
+
 execute_sql_file('../sql-scripts/01_create_tables.sql')

@@ -3,7 +3,7 @@ import os
 import re
 from dotenv import load_dotenv
 
-# Load database credentials from your hidden .env file for security
+# Load database credentials from  .env file for security
 load_dotenv()
 
 def run_kpi_report(sql_filename):
@@ -79,6 +79,4 @@ def run_kpi_report(sql_filename):
             cursor.close()
             db.close()
 
-# PATH ADJUSTMENT: Using '../' to go back one folder from 'python_automation_files' 
-# to locate your 'sql-scripts' folder.
 run_kpi_report('../sql-scripts/05_operationalvalue_analysis.sql')

@@ -78,5 +78,5 @@ def run_coverage_analysis(sql_filename):
             cursor.close()
             db.close()
 
-# PATH UPDATE: Using '../' to find the SQL file from within the 'python_automation_files' folder.
+
 run_coverage_analysis('../sql-scripts/06_geo-facilitycoverage_analysis.sql')

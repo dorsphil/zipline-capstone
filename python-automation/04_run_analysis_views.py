@@ -38,7 +38,7 @@ def create_analysis_views(sql_filename):
                 print(" Task successful!")
 
         # Verification: Run a 'DESCRIBE' command to show the columns of the new View
-        print("\n📋 Table Structure Verification:")
+        print("\n Table Structure Verification:")
         cursor.execute("DESCRIBE deliveries_complete")
         
         # Fetchall() retrieves all rows from the last executed query
@@ -50,7 +50,7 @@ def create_analysis_views(sql_filename):
         db.commit()
 
     except mysql.connector.Error as err:
-        # Catch and display any database-specific errors (e.g., wrong password or syntax)
+        # Catch and display any database-specific errors 
         print(f" MySQL Error: {err}")
     
     finally:
@@ -59,6 +59,5 @@ def create_analysis_views(sql_filename):
             cursor.close()
             db.close()
 
-# Path adjusted: '../' tells Python to look one folder UP and then into 'sql-scripts'
-# because this script is now inside the 'python_automation_files' folder.
+
 create_analysis_views('../sql-scripts/04_create_views.sql')

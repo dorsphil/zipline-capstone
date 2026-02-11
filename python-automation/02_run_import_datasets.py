@@ -58,5 +58,4 @@ def load_csv_data(sql_filename):
             cursor.close()
             db.close()
 
-# PATH ADJUSTMENT: '../' moves out of 'python_automation_files' to locate 'sql-scripts'
 load_csv_data('../sql-scripts/02_import_datasets.sql')

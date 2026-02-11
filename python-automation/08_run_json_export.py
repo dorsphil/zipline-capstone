@@ -33,7 +33,7 @@ def run_json_export(sql_filename):
             # Split the script into individual export commands
             commands = clean_content.split(';')
 
-        print(f"🚀 Running JSON export automation from: {sql_filename}")
+        print(f" Running JSON export automation from: {sql_filename}")
 
         # 3. Iterate through each export command
         for command in commands:
@@ -45,14 +45,12 @@ def run_json_export(sql_filename):
                 # so there are no rows sent back to Python to display.
                 cursor.execute(query)
         
-        # Save any changes (though OUTFILE is mostly a write operation)
+        # Save any changes 
         db.commit()
         print("\n Execution finished. If no 'File already exists' errors appeared, your JSON files are ready!")
 
     except mysql.connector.Error as err:
         # Catch specific MySQL errors:
-        # Error 1086: The JSON file already exists in the folder.
-        # Error 1290: MySQL 'secure_file_priv' restriction is blocking the write.
         print(f" MySQL Error: {err}")
     except Exception as e:
         # Catch general Python errors (like file path issues)
@@ -63,5 +61,4 @@ def run_json_export(sql_filename):
             cursor.close()
             db.close()
 
-# PATH ADJUSTMENT: Using '../' to go back one level from 'python_automation_files'
 run_json_export('../sql-scripts/08_sqljson_conversion.sql')

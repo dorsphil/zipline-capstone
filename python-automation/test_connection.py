@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 
 # 1. Load the credentials from the .env file
-# This reads the 'DB_HOST', 'DB_USER', and 'DB_PASSWORD' so they can be used below.
+# This reads the 'DB_HOST', 'DB_USER', and 'DB_PASSWORD'
 load_dotenv()
 
 try:
@@ -25,7 +25,7 @@ try:
         # 3. Metadata Check: Get the server version
         # This confirms not just that we are connected, but that the server is responsive.
         db_info = connection.get_server_info()
-        print(f"🖥️ MySQL Server Version: {db_info}")
+        print(f" MySQL Server Version: {db_info}")
 
 except Exception as e:
     # If the password is wrong or the server is off, this block catches the error

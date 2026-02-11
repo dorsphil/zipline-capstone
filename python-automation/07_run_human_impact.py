@@ -67,10 +67,10 @@ def run_impact_analysis(sql_filename):
         print("\n" + "="*60 + "\n Human Impact Analysis Complete!")
 
     except mysql.connector.Error as err:
-        # Catch database-side errors (syntax, connection, etc.)
+        # Catch database-side errors 
         print(f" MySQL Error: {err}")
     except FileNotFoundError:
-        # Catch Python-side errors (wrong file path or missing file)
+        # Catch Python-side errors 
         print(f" Error: File '{sql_filename}' not found. Check your '../' path logic!")
     finally:
         # Ensure the database connection closes regardless of success or failure
@@ -78,5 +78,5 @@ def run_impact_analysis(sql_filename):
             cursor.close()
             db.close()
 
-# PATH UPDATE: Using '../' to go back one level from 'python_automation_files'
+
 run_impact_analysis('../sql-scripts/07_humanimpact_analysis.sql')

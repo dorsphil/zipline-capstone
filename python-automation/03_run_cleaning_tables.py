@@ -27,7 +27,7 @@ def run_cleaning_pipeline(sql_filename):
             content = f.read()
             
             # REGEX CLEANING: 
-            # 1. Removes multi-line comments (/* comment */) often used for long descriptions
+            # 1. Removes multi-line comments
             content = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
             
             # 2. Removes single-line comments (-- comment)
@@ -64,14 +64,12 @@ def run_cleaning_pipeline(sql_filename):
         print("\n Zipline Data Cleaning Complete!")
 
     except mysql.connector.Error as err:
-        # Prints specific MySQL error codes (like syntax or permission issues)
+        # Prints specific MySQL error codes 
         print(f"  MySQL Error: {err}")
     finally:
-        # Always close the connection to free up system resources
+        #  close the connection to free up system resources
         if 'db' in locals() and db.is_connected():
             cursor.close()
             db.close()
 
-# Path adjusted for the new folder structure: 
-# '../' moves out of 'python_automation_files' to find 'sql-scripts'
 run_cleaning_pipeline('../sql-scripts/03_cleaning_tables.sql')
